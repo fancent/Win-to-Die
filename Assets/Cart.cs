@@ -11,9 +11,11 @@ public class Cart : MonoBehaviour
     public Rigidbody rigidbody;
     public float speed;
 
+    bool end;
     // Start is called before the first frame update
     void Start()
     {
+        end = false;
         rigidbody = gameObject.GetComponent<Rigidbody>();
     }
 
@@ -44,6 +46,11 @@ public class Cart : MonoBehaviour
         horizontal += speed;
         return (Vector3.forward * horizontal) + (Vector3.right * vertical);
     }
+    public void End()
+    {
+        rigidbody.velocity *= 0f;
+        end = true;
+    }
 
     public void Cart_speedup()
     {
@@ -66,6 +73,11 @@ public class Cart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (end)
+        {
+            rigidbody.velocity *= 0f;
+            return;
+        }
         Vector3 vec;
         if (inputMethod == 0)
         {
