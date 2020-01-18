@@ -22,11 +22,12 @@ public class Cart : MonoBehaviour
         float horizontal= 0, vertical = 0;
         //WD positive, AS negative 
         if (Input.GetKey(KeyCode.W))
-            horizontal += speed;
+            horizontal += .5f*speed;
         if (Input.GetKey(KeyCode.A))
             vertical -= speed;
         if (Input.GetKey(KeyCode.D))
             vertical += speed;
+        horizontal += speed;
         return (Vector3.forward * horizontal) + (Vector3.right * vertical);
     }
     Vector3 _genMoveVecDir()
@@ -34,14 +35,15 @@ public class Cart : MonoBehaviour
         float horizontal = 0, vertical = 0;
         //WD positive, AS negative 
         if (Input.GetKey(KeyCode.UpArrow))
-            horizontal += speed;
+            horizontal += .5f*speed;
         if (Input.GetKey(KeyCode.LeftArrow))
             vertical -= speed;
         if (Input.GetKey(KeyCode.RightArrow))
             vertical += speed;
+        horizontal += speed;
         return (Vector3.forward * horizontal) + (Vector3.right * vertical);
     }
-
+    
     Vector3 _genMoveVecController()
     {
         //TODO 
