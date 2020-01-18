@@ -30,6 +30,7 @@ public class Cart : MonoBehaviour
         horizontal += speed;
         return (Vector3.forward * horizontal) + (Vector3.right * vertical);
     }
+    
     Vector3 _genMoveVecDir()
     {
         float horizontal = 0, vertical = 0;
@@ -43,7 +44,12 @@ public class Cart : MonoBehaviour
         horizontal += speed;
         return (Vector3.forward * horizontal) + (Vector3.right * vertical);
     }
-    
+
+    public void Cart_speedup()
+    {
+        rigidbody.velocity *= 1.2f;
+    }
+
     Vector3 _genMoveVecController()
     {
         //TODO 
