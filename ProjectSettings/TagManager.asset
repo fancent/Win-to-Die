@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Player1
   - Player2
+  - Left Wall
+  - Right Wall
   layers:
   - Default
   - TransparentFX
