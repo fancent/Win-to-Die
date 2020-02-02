@@ -18,13 +18,17 @@ public class WallMechanics : MonoBehaviour
     }
  
     void OnCollisionEnter(Collision other) {
+        GameSystem g_sys = GameObject.Find("GameSystem").GetComponent<GameSystem>();
+        
+        g_sys.speedUp(other.gameObject.tag, 1.05f);
         if(other.gameObject.tag == "Right Wall") {
             Debug.Log("pushLeft");
-            rb.AddForce(Vector3.left * pushForce, ForceMode.Impulse);
+            rb.AddForce((Vector3.left) * pushForce, ForceMode.Impulse);
         }
         else if(other.gameObject.tag == "Left Wall") {
             Debug.Log("pushRight");
-            rb.AddForce(Vector3.right * pushForce, ForceMode.Impulse);
+            rb.AddForce((Vector3.right) * pushForce, ForceMode.Impulse);
+
         }
     }
 }

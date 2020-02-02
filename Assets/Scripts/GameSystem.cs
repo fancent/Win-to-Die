@@ -20,6 +20,12 @@ public class GameSystem : MonoBehaviour
         p2wintext.SetActive(false);
         explode = gameObject.GetComponent<AudioSource>();
     }
+    public void beginrace()
+    {
+        p1.GetComponent<Cart>().beginBoost();
+        p2.GetComponent<Cart>().beginBoost();
+    }
+
     public void win(string name)
     {
         if (end == true)
@@ -39,12 +45,12 @@ public class GameSystem : MonoBehaviour
     }
 
 
-    public void speedUp(string name)
+    public void speedUp(string name, float speed=1.2f)
     {
         if (name == "Player1")
-            p1.GetComponent<Cart>().Cart_speedup();
+            p1.GetComponent<Cart>().Cart_speedup(speed);
         else if (name == "Player2")
-            p2.GetComponent<Cart>().Cart_speedup();
+            p2.GetComponent<Cart>().Cart_speedup(speed);
         else
              Debug.LogError("Wrong Player id");
     }

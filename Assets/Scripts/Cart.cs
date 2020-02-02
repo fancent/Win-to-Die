@@ -8,15 +8,72 @@ public class Cart : MonoBehaviour
 
     public int inputMethod;
     // 0 for wasd, 1 for Dir, otherwise(use 2) for Controller
-    public Rigidbody rigidbody;
+    public Rigidbody m_rigidbody;
     public float speed;
-
-    bool end;
+    public int brake;
+    public bool beginned, ended;
     // Start is called before the first frame update
     void Start()
     {
-        end = false;
-        rigidbody = gameObject.GetComponent<Rigidbody>();
+        beginned = false;
+        ended = false;
+        m_rigidbody = gameObject.GetComponent<Rigidbody>();
+        m_rigidbody.velocity = Vector3.zero;
+    }
+
+    public void beginBoost()
+    {
+        beginned = true;
+        m_rigidbody.velocity = Vector3.forward;
+    }
+
+    void _moveWASD() {
+
+        float speedBoost = speed * 10;
+        if (Input.GetKey(KeyCode.W))
+            speedBoost *= .7f;
+
+        m_rigidbody.AddForce(speedBoost * m_rigidbody.velocity.normalized);
+        m_rigidbody.AddForce(Vector3.forward * 2);
+        float turnDegree = 0;
+        if (Input.GetKey(KeyCode.A))
+            turnDegree -= 1;
+        if (Input.GetKey(KeyCode.D))
+            turnDegree += 1;
+        Vector3 tmp = new Vector3(0, 25* turnDegree, 0);
+        m_rigidbody.velocity = Quaternion.Euler(tmp * Time.deltaTime) * m_rigidbody.velocity;
+        Debug.Log(m_rigidbody.velocity);
+        tmp = m_rigidbody.velocity;
+        tmp = Quaternion.Euler(0, 90, 0)* tmp;
+        transform.rotation = Quaternion.LookRotation(tmp);
+        Debug.Log(transform.rotation);
+    }
+
+    void _moveDir()
+    {
+        float speedBoost = speed * 10;
+        if (Input.GetKey(KeyCode.UpArrow))
+            speedBoost *= .7f;
+
+        m_rigidbody.AddForce(speedBoost * m_rigidbody.velocity.normalized);
+        m_rigidbody.AddForce(Vector3.forward * 2);
+        float turnDegree = 0;
+        if (Input.GetKey(KeyCode.LeftArrow))
+            turnDegree -= 1;
+        if (Input.GetKey(KeyCode.RightArrow))
+            turnDegree += 1;
+        Vector3 tmp = new Vector3(0, 25 * turnDegree, 0);
+        m_rigidbody.velocity = Quaternion.Euler(tmp * Time.deltaTime) * m_rigidbody.velocity;
+        Debug.Log(m_rigidbody.velocity);
+        tmp = m_rigidbody.velocity;
+        tmp = Quaternion.Euler(0, 90, 0) * tmp;
+        transform.rotation = Quaternion.LookRotation(tmp);
+        Debug.Log(transform.rotation);
+    }
+
+    void _moveController()
+    {
+
     }
 
     Vector3 _genMoveVecWASD()
@@ -48,13 +105,13 @@ public class Cart : MonoBehaviour
     }
     public void End()
     {
-        rigidbody.velocity *= 0f;
-        end = true;
+        m_rigidbody.velocity *= 0f;
+        ended = true;
     }
 
-    public void Cart_speedup()
+    public void Cart_speedup(float speed=1.2f)
     {
-        rigidbody.velocity *= 1.2f;
+        m_rigidbody.velocity *= speed;
     }
 
     Vector3 _genMoveVecController()
@@ -65,7 +122,7 @@ public class Cart : MonoBehaviour
 
     void _addForce(Vector3 vec)
     {
-         rigidbody.AddForce(10*vec);
+         m_rigidbody.AddForce(10*vec);
     }
 
 
@@ -73,11 +130,14 @@ public class Cart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (end)
+        if(!beginned || ended)
         {
-            rigidbody.velocity *= 0f;
+            Vector3 tmp = m_rigidbody.velocity;
+            tmp.x = tmp.y = 0f;
+            m_rigidbody.velocity = tmp;
             return;
         }
+        /*
         Vector3 vec;
         if (inputMethod == 0)
         {
@@ -91,5 +151,10 @@ public class Cart : MonoBehaviour
             vec = _genMoveVecController();
         }
         _addForce(vec);
+        */
+        if (inputMethod == 0)
+            _moveWASD();
+        else if (inputMethod == 1)
+            _moveDir();
     }
 }
