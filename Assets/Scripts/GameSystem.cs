@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Rewired;
 
 public class GameSystem : MonoBehaviour
 {
@@ -8,6 +9,18 @@ public class GameSystem : MonoBehaviour
     GameObject p1wintext, p2wintext;
     bool end;
     AudioSource explode;
+
+    public int playerId;
+    private Player player;
+    private CharacterController cc;
+    bool isPressed;
+
+    void Awake() {
+        // Get the Rewired Player object for this player and keep it for the duration of the character's lifetime
+        playerId = 0;
+        player = ReInput.players.GetPlayer(playerId);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +70,10 @@ public class GameSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        isPressed = player.GetButtonDown("Start");
+        if(isPressed) {
+            isPressed = true;
+            beginrace();
+        }
     }
 }
