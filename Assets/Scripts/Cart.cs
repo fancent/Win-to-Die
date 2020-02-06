@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Rewired;
 
 public class Cart : MonoBehaviour
 {
@@ -15,6 +16,14 @@ public class Cart : MonoBehaviour
     public float speed;
     public int brake;
     public bool beginned, ended;
+
+    public int playerId = 0;
+    private Player player;
+
+    void Awake()
+    {
+        player = ReInput.players.GetPlayer(playerId);
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -79,7 +88,21 @@ public class Cart : MonoBehaviour
 
     void _moveController()
     {
+        float speedBoost = speed * 10;
+        if (player.GetButton("Accelerate"))
+            speedBoost *= 1.2f;
 
+        m_rigidbody.AddForce(speedBoost * m_rigidbody.velocity.normalized);
+        m_rigidbody.AddForce(Vector3.forward * 2);
+        float turnDegree = 0;
+        turnDegree += player.GetAxis("Move Horizontal");
+        Vector3 tmp = new Vector3(0, 25 * turnDegree, 0);
+        m_rigidbody.velocity = Quaternion.Euler(tmp * Time.deltaTime) * m_rigidbody.velocity;
+        //Debug.Log(m_rigidbody.velocity);
+        tmp = m_rigidbody.velocity;
+        tmp = Quaternion.Euler(0, 90, 0) * tmp;
+        transform.rotation = Quaternion.LookRotation(tmp);
+        //Debug.Log(transform.rotation);
     }
 
     Vector3 _genMoveVecWASD()
@@ -133,10 +156,12 @@ public class Cart : MonoBehaviour
 
     void _useItem()
     {
-        if (inputMethod == 0 && Input.GetKey(KeyCode.E))
+        if (player.GetButton("Use Item"))
             slot.use();
-        else if (inputMethod == 1 && Input.GetKey(KeyCode.RightControl))
-            slot.use();
+        // if (inputMethod == 0 && Input.GetKey(KeyCode.E))
+        //     slot.use();
+        // else if (inputMethod == 1 && Input.GetKey(KeyCode.RightControl))
+        //     slot.use();
     }
 
     // Update is called once per frame
@@ -165,9 +190,10 @@ public class Cart : MonoBehaviour
         _addForce(vec);
         */
         _useItem();
-        if (inputMethod == 0)
-            _moveWASD();
-        else if (inputMethod == 1)
-            _moveDir();
+        _moveController();
+        // if (inputMethod == 0)
+        //     _moveWASD();
+        // else if (inputMethod == 1)
+        //     _moveDir();
     }
 }
