@@ -16,8 +16,8 @@ public class PowerupBox : MonoBehaviour
     {
         Cart cart = c.gameObject.GetComponent<Cart>();
         PowerUpSlot slot = cart.GetComponent<PowerUpSlot>();
-        slot.load(item);
-        Destroy(gameObject);
+        if(slot.load(item))
+            Destroy(gameObject);
     }
 
 

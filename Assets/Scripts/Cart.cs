@@ -156,12 +156,12 @@ public class Cart : MonoBehaviour
 
     void _useItem()
     {
-        if (player.GetButton("Use Item"))
+        if (inputMethod == 2 && player.GetButton("Use Item"))
             slot.use();
-        // if (inputMethod == 0 && Input.GetKey(KeyCode.E))
-        //     slot.use();
-        // else if (inputMethod == 1 && Input.GetKey(KeyCode.RightControl))
-        //     slot.use();
+        if (inputMethod == 0 && Input.GetKey(KeyCode.E))
+            slot.use();
+        else if (inputMethod == 1 && Input.GetKey(KeyCode.RightControl))
+            slot.use();
     }
 
     // Update is called once per frame
@@ -190,10 +190,11 @@ public class Cart : MonoBehaviour
         _addForce(vec);
         */
         _useItem();
-        _moveController();
-        // if (inputMethod == 0)
-        //     _moveWASD();
-        // else if (inputMethod == 1)
-        //     _moveDir();
+        if( inputMethod == 2)
+            _moveController();
+        else if (inputMethod == 0)
+            _moveWASD();
+        else if (inputMethod == 1)
+            _moveDir();
     }
 }
