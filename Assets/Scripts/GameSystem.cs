@@ -78,7 +78,7 @@ public class GameSystem : MonoBehaviour
         if (player.GetButtonDown("Start Game"))
             beginrace();
         
-        if (player.GetButtonDown("Restart Game"))
+        if (player.GetButtonDown("Restart Game") || Input.GetKey(KeyCode.Escape))
             restart();
     }
 }
