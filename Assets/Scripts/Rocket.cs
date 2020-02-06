@@ -6,6 +6,7 @@ public class Rocket : MonoBehaviour
 {
     // Start is called before the first frame update
     public Rigidbody m_rigidbody;
+    public Vector3 constspeed;
     public bool ignited;
     public Cart owner;
     public SpeedBoost sbPrefab;//drag
@@ -25,7 +26,7 @@ public class Rocket : MonoBehaviour
     {
         m_rigidbody = gameObject.GetComponent<Rigidbody>();
         owner = user;
-        m_rigidbody.velocity = user.m_rigidbody.velocity * 2;
+        m_rigidbody.velocity = constspeed = user.m_rigidbody.velocity * 2f;
         ignited = true;
         Debug.Log("ign");
         Debug.Log(ignited);
@@ -55,6 +56,7 @@ public class Rocket : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log(m_rigidbody.velocity);
+        m_rigidbody.velocity = constspeed;
     }
 }

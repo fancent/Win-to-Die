@@ -7,6 +7,7 @@ public class Cart : MonoBehaviour
 {
     public PowerUpSlot slot;
     public StatusList stat;
+    public GameObject slotAnchor;
 
     public int inputMethod;
     // 0 for wasd, 1 for Dir, otherwise(use 2) for Controller

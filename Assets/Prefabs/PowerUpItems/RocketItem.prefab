@@ -8,8 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3222959138149840042}
+  - component: {fileID: 5476454985151484792}
   - component: {fileID: -1434458279642674952}
+  - component: {fileID: 4501670521327461276}
   m_Layer: 0
   m_Name: RocketItem
   m_TagString: Untagged
@@ -17,20 +18,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3222959138149840042
-Transform:
+--- !u!224 &5476454985151484792
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1356937806303298844}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 47.5, y: 1.5009124, z: -85.299995}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -85.299995}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 47.5, y: 1.5009124}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &-1434458279642674952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43,4 +49,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e0becb9e67796f4586137f8150c430e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  imgAsset: {fileID: 6796703463793520904, guid: 081be5f0ecbcec94f9d2a467f8af6833,
+    type: 3}
   prefab: {fileID: -5862297495599544566, guid: 7606595763ebadb479e1472e033be702, type: 3}
+--- !u!222 &4501670521327461276
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356937806303298844}
+  m_CullTransparentMesh: 0

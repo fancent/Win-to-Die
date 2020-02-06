@@ -116,7 +116,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 3
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -169,7 +169,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 7
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -4766,3 +4766,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a74d4506a29c09c41ac40da925916c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  duration: 0
+  player: {fileID: 0}
+  lifespan: 0

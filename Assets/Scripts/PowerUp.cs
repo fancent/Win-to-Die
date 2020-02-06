@@ -5,6 +5,8 @@ using UnityEngine;
 abstract public class PowerUp : MonoBehaviour
 {
     // Start is called before the first frame update
+
+    public GameObject imgAsset;
     void Start()
     {
         

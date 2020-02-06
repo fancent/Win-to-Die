@@ -6,6 +6,7 @@ public class GameSystem : MonoBehaviour
 {
     GameObject p1, p2;
     GameObject p1wintext, p2wintext;
+    GameObject startButton;
     bool end;
     AudioSource explode;
     // Start is called before the first frame update
@@ -14,6 +15,7 @@ public class GameSystem : MonoBehaviour
         end = false;
         p1 = GameObject.FindWithTag("Player1");
         p2 = GameObject.FindWithTag("Player2");
+        startButton = GameObject.Find("StartButton");
         p1wintext = GameObject.Find("P1WINS");
         p2wintext = GameObject.Find("P2WINS");
         p1wintext.SetActive(false);
@@ -24,6 +26,7 @@ public class GameSystem : MonoBehaviour
     {
         p1.GetComponent<Cart>().beginBoost();
         p2.GetComponent<Cart>().beginBoost();
+        startButton.SetActive(false);
     }
 
     public void win(string name)
