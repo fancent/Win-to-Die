@@ -78,10 +78,7 @@ public class Cart : MonoBehaviour
         m_rigidbody.AddForce(speedBoost * m_rigidbody.velocity.normalized);
         m_rigidbody.AddForce(Vector3.forward * 2);
         float turnDegree = 0;
-        if (player.GetAxis("Move Horizontal") < 0)
-            turnDegree -= 1;
-        if (player.GetAxis("Move Horizontal") > 0)
-            turnDegree += 1;
+        turnDegree += player.GetAxis("Move Horizontal");
         Vector3 tmp = new Vector3(0, 25* turnDegree, 0);
         m_rigidbody.velocity = Quaternion.Euler(tmp * Time.deltaTime) * m_rigidbody.velocity;
         // Debug.Log(m_rigidbody.velocity);
