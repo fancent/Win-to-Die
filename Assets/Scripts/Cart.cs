@@ -156,12 +156,35 @@ public class Cart : MonoBehaviour
 
     void _useItem()
     {
+        int aimMethod = slot.getAimMethod();
         if (inputMethod == 2 && player.GetButton("Use Item"))
+        {
             slot.use();
-        if (inputMethod == 0 && Input.GetKey(KeyCode.E))
+        }
+        else if (inputMethod == 0 && Input.GetKey(KeyCode.E))
+        {
+            if(aimMethod == 1)
+                slot.setAim_rot(new Vector3(0, 0, 0));
             slot.use();
+        }
+        else if (inputMethod == 0 && Input.GetKey(KeyCode.Q))
+        {
+            if (aimMethod == 1) 
+                slot.setAim_rot(new Vector3(0, 180, 0));
+            slot.use();
+        }
         else if (inputMethod == 1 && Input.GetKey(KeyCode.RightControl))
+        {
+            if (aimMethod == 1) 
+                slot.setAim_rot(new Vector3(0, 0, 0));
             slot.use();
+        }
+        else if (inputMethod == 1 && Input.GetKey(KeyCode.RightShift))
+        {
+            if (aimMethod == 1) 
+                slot.setAim_rot(new Vector3(0, 180, 0));
+            slot.use();
+        }
     }
 
     // Update is called once per frame

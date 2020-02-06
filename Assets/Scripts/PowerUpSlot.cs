@@ -38,6 +38,21 @@ public class PowerUpSlot: MonoBehaviour
         imgs[0].transform.parent = canvas.transform;
         return true;
     }
+    public int getAimMethod()
+    {
+        if (slot[0] == null)
+            return -1;
+        return slot[0].aim.aimMethod;
+    }
+
+    public void setAim_rot(Vector3 rot)
+    {
+        if (slot[0] != null)
+        {
+            Debug.Log(slot[0].aim);
+            slot[0].aim.rot = rot;
+        }
+    }
     public void use()
     {
         if (slot[0] == null)
