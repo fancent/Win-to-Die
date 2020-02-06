@@ -5,6 +5,9 @@ using System;
 
 public class Cart : MonoBehaviour
 {
+    public PowerUpSlot slot;
+    public StatusList stat;
+    public GameObject slotAnchor;
 
     public int inputMethod;
     // 0 for wasd, 1 for Dir, otherwise(use 2) for Controller
@@ -15,6 +18,9 @@ public class Cart : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        stat = gameObject.GetComponent<StatusList>();
+        slot = gameObject.GetComponent<PowerUpSlot>();
+        slot.Initialize(1, this);
         beginned = false;
         ended = false;
         m_rigidbody = gameObject.GetComponent<Rigidbody>();
@@ -31,7 +37,7 @@ public class Cart : MonoBehaviour
 
         float speedBoost = speed * 10;
         if (Input.GetKey(KeyCode.W))
-            speedBoost *= .7f;
+            speedBoost *= 1.2f;
 
         m_rigidbody.AddForce(speedBoost * m_rigidbody.velocity.normalized);
         m_rigidbody.AddForce(Vector3.forward * 2);
@@ -42,18 +48,18 @@ public class Cart : MonoBehaviour
             turnDegree += 1;
         Vector3 tmp = new Vector3(0, 25* turnDegree, 0);
         m_rigidbody.velocity = Quaternion.Euler(tmp * Time.deltaTime) * m_rigidbody.velocity;
-        Debug.Log(m_rigidbody.velocity);
+        //Debug.Log(m_rigidbody.velocity);
         tmp = m_rigidbody.velocity;
         tmp = Quaternion.Euler(0, 90, 0)* tmp;
         transform.rotation = Quaternion.LookRotation(tmp);
-        Debug.Log(transform.rotation);
+        //Debug.Log(transform.rotation);
     }
 
     void _moveDir()
     {
         float speedBoost = speed * 10;
         if (Input.GetKey(KeyCode.UpArrow))
-            speedBoost *= .7f;
+            speedBoost *= 1.2f;
 
         m_rigidbody.AddForce(speedBoost * m_rigidbody.velocity.normalized);
         m_rigidbody.AddForce(Vector3.forward * 2);
@@ -64,11 +70,11 @@ public class Cart : MonoBehaviour
             turnDegree += 1;
         Vector3 tmp = new Vector3(0, 25 * turnDegree, 0);
         m_rigidbody.velocity = Quaternion.Euler(tmp * Time.deltaTime) * m_rigidbody.velocity;
-        Debug.Log(m_rigidbody.velocity);
+        //Debug.Log(m_rigidbody.velocity);
         tmp = m_rigidbody.velocity;
         tmp = Quaternion.Euler(0, 90, 0) * tmp;
         transform.rotation = Quaternion.LookRotation(tmp);
-        Debug.Log(transform.rotation);
+        //Debug.Log(transform.rotation);
     }
 
     void _moveController()
@@ -125,7 +131,13 @@ public class Cart : MonoBehaviour
          m_rigidbody.AddForce(10*vec);
     }
 
-
+    void _useItem()
+    {
+        if (inputMethod == 0 && Input.GetKey(KeyCode.E))
+            slot.use();
+        else if (inputMethod == 1 && Input.GetKey(KeyCode.RightControl))
+            slot.use();
+    }
 
     // Update is called once per frame
     void Update()
@@ -152,6 +164,7 @@ public class Cart : MonoBehaviour
         }
         _addForce(vec);
         */
+        _useItem();
         if (inputMethod == 0)
             _moveWASD();
         else if (inputMethod == 1)
