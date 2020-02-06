@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Rewired;
 
 public class GameSystem : MonoBehaviour
 {
@@ -9,6 +11,15 @@ public class GameSystem : MonoBehaviour
     GameObject startButton;
     bool end;
     AudioSource explode;
+
+    private Player player;
+    public int playerId = 0;
+
+    void Awake()
+    {
+        player = ReInput.players.GetPlayer(playerId);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +58,10 @@ public class GameSystem : MonoBehaviour
         p2.GetComponent<Cart>().End();
     }
 
+    public void restart()
+    {
+        SceneManager.LoadScene("MainScene");
+    }
 
     public void speedUp(string name, float speed=1.2f)
     {
@@ -60,6 +75,10 @@ public class GameSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (player.GetButtonDown("Start Game"))
+            beginrace();
         
+        if (player.GetButtonDown("Restart Game"))
+            restart();
     }
 }
