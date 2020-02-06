@@ -15,6 +15,8 @@ public class PowerupBox : MonoBehaviour
     void OnTriggerEnter(Collider c)
     {
         Cart cart = c.gameObject.GetComponent<Cart>();
+        if (!cart)
+            return;
         PowerUpSlot slot = cart.GetComponent<PowerUpSlot>();
         if(slot.load(item))
             Destroy(gameObject);

@@ -24,8 +24,8 @@ public class GameSystem : MonoBehaviour
     void Start()
     {
         end = false;
-        p1 = GameObject.FindWithTag("Player1");
-        p2 = GameObject.FindWithTag("Player2");
+        p1 = GameObject.Find("LeftKart");
+        p2 = GameObject.Find("RightKart");
         startButton = GameObject.Find("StartButton");
         p1wintext = GameObject.Find("P1WINS");
         p2wintext = GameObject.Find("P2WINS");

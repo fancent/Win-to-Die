@@ -269,7 +269,7 @@ MonoBehaviour:
   slot: {fileID: 0}
   stat: {fileID: 0}
   slotAnchor: {fileID: 507366859}
-  inputMethod: 2
+  inputMethod: 0
   m_rigidbody: {fileID: 0}
   speed: 2
   brake: 0
@@ -1182,6 +1182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 646474dc62a654ee4a19048e42b01744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerId: 0
 --- !u!4 &660048810
 Transform:
   m_ObjectHideFlags: 0
@@ -1626,7 +1627,7 @@ MonoBehaviour:
   slot: {fileID: 0}
   stat: {fileID: 0}
   slotAnchor: {fileID: 928848989}
-  inputMethod: 2
+  inputMethod: 1
   m_rigidbody: {fileID: 0}
   speed: 2
   brake: 0
