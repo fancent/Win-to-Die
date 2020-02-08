@@ -159,6 +159,11 @@ public class Cart : MonoBehaviour
         int aimMethod = slot.getAimMethod();
         if (inputMethod == 2 && player.GetButton("Use Item"))
         {
+            Debug.Log(player.GetAxis("Aim Item"));
+            if(aimMethod == 1 && (player.GetAxis("Aim Item") < 0))
+                slot.setAim_rot(new Vector3(0, 180, 0));
+            else
+                slot.setAim_rot(new Vector3(0, 0, 0));
             slot.use();
         }
         else if (inputMethod == 0 && Input.GetKey(KeyCode.E))

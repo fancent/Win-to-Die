@@ -269,7 +269,7 @@ MonoBehaviour:
   slot: {fileID: 0}
   stat: {fileID: 0}
   slotAnchor: {fileID: 507366859}
-  inputMethod: 0
+  inputMethod: 2
   m_rigidbody: {fileID: 0}
   speed: 2
   brake: 0
@@ -1627,7 +1627,7 @@ MonoBehaviour:
   slot: {fileID: 0}
   stat: {fileID: 0}
   slotAnchor: {fileID: 928848989}
-  inputMethod: 1
+  inputMethod: 2
   m_rigidbody: {fileID: 0}
   speed: 2
   brake: 0
@@ -3237,6 +3237,15 @@ MonoBehaviour:
       _behaviorId: 0
       _userAssignable: 1
       _categoryId: 0
+    - _id: 5
+      _name: Aim Item
+      _type: 0
+      _descriptiveName: Aim Item
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 0
     actionCategories:
     - _name: Default
       _descriptiveName: Default
@@ -3246,7 +3255,7 @@ MonoBehaviour:
     actionCategoryMap:
       list:
       - categoryId: 0
-        actionIds: 0000000001000000020000000300000004000000
+        actionIds: 000000000100000002000000030000000400000005000000
     inputBehaviors:
     - _id: 0
       _name: Default
@@ -3358,6 +3367,17 @@ MonoBehaviour:
         _modifierKey1: 0
         _modifierKey2: 0
         _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 5
+        _elementType: 0
+        _elementIdentifierId: 3
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
     keyboardMaps: []
     mouseMaps: []
     customControllerMaps: []
@@ -3365,7 +3385,7 @@ MonoBehaviour:
     controllerMapLayoutManagerRuleSets: []
     controllerMapEnablerRuleSets: []
     playerIdCounter: 3
-    actionIdCounter: 5
+    actionIdCounter: 6
     actionCategoryIdCounter: 1
     inputBehaviorIdCounter: 1
     mapCategoryIdCounter: 1
