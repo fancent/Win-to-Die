@@ -22,11 +22,11 @@ public class Rocket : MonoBehaviour
         
         
     }
-    public void ignite(Cart user)
+    public void ignite(Cart user, Vector3 rotation)
     {
         m_rigidbody = gameObject.GetComponent<Rigidbody>();
         owner = user;
-        m_rigidbody.velocity = constspeed = user.m_rigidbody.velocity * 2f;
+        m_rigidbody.velocity = constspeed = Quaternion.Euler(rotation) * user.m_rigidbody.velocity * 1.2f + user.m_rigidbody.velocity;
         ignited = true;
         Debug.Log("ign");
         Debug.Log(ignited);
