@@ -10,7 +10,7 @@ namespace PathCreation.Examples
         public float roadWidth = .4f;
         public float wallWidth = .4f;
 
-        [Range(0, .5f)]
+        [Range(0, 2f)]
         public float thickness = .15f;
         public bool flattenSurface;
 
@@ -347,10 +347,6 @@ namespace PathCreation.Examples
             if (meshHolder == null)
             {
                 meshHolder = new GameObject(this.transform.name + " Mesh Holder");
-            }
-
-            if (meshHolder.transform.childCount <= 0)
-            {
                 roadHolder = new GameObject("Road");
                 setupMeshHolder(roadHolder);
 
@@ -359,8 +355,9 @@ namespace PathCreation.Examples
 
                 rightWallHolder = new GameObject("Right_Wall");
                 setupMeshHolder(rightWallHolder);
-
             }
+
+
 
             // meshHolder.transform.rotation = Quaternion.identity;
             // meshHolder.transform.position = Vector3.zero;
