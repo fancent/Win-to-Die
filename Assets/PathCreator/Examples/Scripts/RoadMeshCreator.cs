@@ -8,6 +8,8 @@ namespace PathCreation.Examples
     {
         [Header("Road settings")]
         public float roadWidth = .4f;
+        public float wallWidth = .4f;
+
         [Range(0, .5f)]
         public float thickness = .15f;
         public bool flattenSurface;
@@ -172,9 +174,13 @@ namespace PathCreation.Examples
                 Vector3 localUp = (usePathNormals) ? Vector3.Cross(path.GetTangent(i), path.GetNormal(i)) : path.up;
                 Vector3 localRight = (usePathNormals) ? path.GetNormal(i) : Vector3.Cross(localUp, path.GetTangent(i));
 
-                // Find position to left and right of current path vertex
-                Vector3 vertSideA = path.GetPoint(i) - localRight * Mathf.Abs(roadWidth) - localRight + localUp * thickness;
-                Vector3 vertSideB = path.GetPoint(i) + localRight * Mathf.Abs(roadWidth) - localRight - localRight + localUp * thickness;
+                // // Find position to left and right of current path vertex
+
+                // Vector3 vertSideA = path.GetPoint(i) - localRight * Mathf.Abs(wallWidth) - localRight + localUp * thickness;
+                // Vector3 vertSideB = path.GetPoint(i) + localRight * Mathf.Abs(roadWidth) - localRight - localRight + localUp * thickness;
+
+                Vector3 vertSideA = path.GetPoint(i) - localRight * Mathf.Abs(wallWidth) - localRight + localUp * thickness;
+                Vector3 vertSideB = path.GetPoint(i) - localRight * Mathf.Abs(roadWidth) + localUp * thickness;
 
                 // Add top of road vertices
                 verts[vertIndex + 0] = vertSideA;
