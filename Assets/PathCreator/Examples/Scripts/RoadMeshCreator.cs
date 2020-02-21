@@ -335,6 +335,7 @@ namespace PathCreation.Examples
             holder.transform.parent = meshHolder.transform;
             holder.gameObject.AddComponent<MeshFilter>();
             holder.gameObject.AddComponent<MeshRenderer>();
+            holder.gameObject.AddComponent<MeshCollider>();
             holder.transform.rotation = Quaternion.identity;
             holder.transform.position = Vector3.zero;
             holder.transform.localScale = Vector3.one;
@@ -357,21 +358,30 @@ namespace PathCreation.Examples
                 setupMeshHolder(rightWallHolder);
             }
 
+            meshHolder.transform.rotation = Quaternion.identity;
+            meshHolder.transform.position = Vector3.zero;
+            meshHolder.transform.localScale = Vector3.one;
 
-
-            // meshHolder.transform.rotation = Quaternion.identity;
-            // meshHolder.transform.position = Vector3.zero;
-            // meshHolder.transform.localScale = Vector3.one;
-
+            if (roadHolder == null || leftWallHolder == null || rightWallHolder == null)
+            {
+                roadHolder = meshHolder.transform.Find("Road").gameObject;
+                leftWallHolder = meshHolder.transform.Find("Left_Wall").gameObject;
+                rightWallHolder = meshHolder.transform.Find("Right_Wall").gameObject;
+            }
 
             roadMeshRenderer = roadHolder.GetComponent<MeshRenderer>();
             roadMeshFilter = roadHolder.GetComponent<MeshFilter>();
+            MeshCollider roadMeshCollider = roadHolder.GetComponent<MeshCollider>();
 
             leftWallRenderer = leftWallHolder.GetComponent<MeshRenderer>();
             leftWallFilter = leftWallHolder.GetComponent<MeshFilter>();
+            MeshCollider leftWallCollider = leftWallHolder.GetComponent<MeshCollider>();
+
 
             rightWallRenderer = rightWallHolder.GetComponent<MeshRenderer>();
             rightWallFilter = rightWallHolder.GetComponent<MeshFilter>();
+            MeshCollider rightWallCollider = rightWallHolder.GetComponent<MeshCollider>();
+
 
             if (roadMesh == null)
             {
@@ -388,12 +398,14 @@ namespace PathCreation.Examples
                 rightWallMesh = new Mesh();
             }
 
-
-
-
             roadMeshFilter.sharedMesh = roadMesh;
+            roadMeshCollider.sharedMesh = roadMesh;
+
             leftWallFilter.sharedMesh = leftWallMesh;
+            leftWallCollider.sharedMesh = leftWallMesh;
+
             rightWallFilter.sharedMesh = rightWallMesh;
+            rightWallCollider.sharedMesh = rightWallMesh;
 
         }
 
