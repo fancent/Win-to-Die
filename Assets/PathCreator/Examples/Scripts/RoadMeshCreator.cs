@@ -353,9 +353,12 @@ namespace PathCreation.Examples
 
                 leftWallHolder = new GameObject("Left_Wall");
                 setupMeshHolder(leftWallHolder);
+                leftWallHolder.tag = "Left Wall";
+
 
                 rightWallHolder = new GameObject("Right_Wall");
                 setupMeshHolder(rightWallHolder);
+                rightWallHolder.tag = "Right Wall";
             }
 
             meshHolder.transform.rotation = Quaternion.identity;
