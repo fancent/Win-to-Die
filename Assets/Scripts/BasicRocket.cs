@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rocket : MonoBehaviour
+public class BasicRocket : MonoBehaviour
 {
     // Start is called before the first frame update
     public Rigidbody m_rigidbody;
