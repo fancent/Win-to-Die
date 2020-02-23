@@ -5,12 +5,10 @@ using UnityEngine;
 public class WallMechanics : MonoBehaviour
 {
     public float pushForce = 10;
-    public Rigidbody rb;
 
     // Use this for initialization
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
