@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item_Rocket : PowerUp
+public class Item_HomingMissile : PowerUp
 {
     // Start is called before the first frame update
     public BasicRocket prefab;//Drag
-    Item_Rocket()
+    Item_HomingMissile()
     {
         aim.aimMethod = 1;
         Debug.Log("Called init");
     }
     void Start()
     {
-        
+
     }
     override public void activate(Cart user)
     {
@@ -24,6 +24,6 @@ public class Item_Rocket : PowerUp
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
