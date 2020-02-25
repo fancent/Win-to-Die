@@ -14,11 +14,11 @@ Preset:
   m_Properties:
   - target: {fileID: 0}
     propertyPath: m_Center.x
-    value: -0.0035
+    value: -0.1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_Center.y
-    value: 0.005
+    value: 0.04
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_Center.z
@@ -26,11 +26,11 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_Radius
-    value: 0.01
+    value: 0.23
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_SuspensionSpring.spring
-    value: 55000
+    value: 50000
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_SuspensionSpring.damper
@@ -38,11 +38,11 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_SuspensionSpring.targetPosition
-    value: 0.5
+    value: 0.65
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_SuspensionDistance
-    value: 0.01
+    value: 0.115
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_ForceAppPointDistance
@@ -50,15 +50,15 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_Mass
-    value: 100
+    value: 20
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_WheelDampingRate
-    value: 1
+    value: 0.25
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_ForwardFriction.m_ExtremumSlip
-    value: 0.4
+    value: 0.6
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_ForwardFriction.m_ExtremumValue
@@ -74,11 +74,11 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_ForwardFriction.m_Stiffness
-    value: 1
+    value: 2.5
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_SidewaysFriction.m_ExtremumSlip
-    value: 0.2
+    value: 0.4
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_SidewaysFriction.m_ExtremumValue
@@ -94,7 +94,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_SidewaysFriction.m_Stiffness
-    value: 1.8
+    value: 2.5
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_Enabled
