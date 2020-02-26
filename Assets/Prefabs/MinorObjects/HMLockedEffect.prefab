@@ -43,7 +43,7 @@ Halo:
   m_Color:
     serializedVersion: 2
     rgba: 4278225919
-  m_Size: 5
+  m_Size: 1
 --- !u!114 &-7903204073369299860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56,4 +56,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df1052239b2add44b345e685678d4d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 0
+  duration: 5
+  lifespan: 0

@@ -20,6 +20,7 @@ public class StatusList : MonoBehaviour
         for (int i = 0; i < 10; i++)
             if (cur_status[i] == null) {
                 cur_status[i] = e;
+                Debug.Log(e);
                 e.Begin();
                 return;
             }

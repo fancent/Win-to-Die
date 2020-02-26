@@ -35,7 +35,7 @@ public class BasicRocket : MonoBehaviour
         Debug.Log("Attached");
         SpeedBoost clone= Instantiate(sbPrefab);
         clone.Initialize(boost_Duration, target);
-        clone.Begin();
+        target.stat.LoadEffect(clone);
     }
     void OnTriggerEnter(Collider c)
     {

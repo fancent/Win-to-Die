@@ -7,7 +7,7 @@ abstract public class Effect : MonoBehaviour
     // Start is called before the first frame update
     public float duration;
     protected Cart player;
-    protected float lifespan;//0: not initialized, 1: not beginned, 2: working, 3: ended, -1: errored
+    public float lifespan;//0: not initialized, 1: not beginned, 2: working, 3: ended, -1: errored
     //UI stuff missing for now
 
     public void Awake()
@@ -54,7 +54,7 @@ abstract public class Effect : MonoBehaviour
         Debug.Log("End of my life!");
     }
 
-    void Update()
+    public void Update()
     {
         if (lifespan == 2) {
             duration -= Time.deltaTime;

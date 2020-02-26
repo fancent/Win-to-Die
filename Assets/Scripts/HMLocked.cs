@@ -11,18 +11,16 @@ public class HMLocked : Effect
     }
     public override void bgnAffect()
     {
+        Debug.Log("HMLed");
+        return;
     }
     public override void updAffect()
     {
-        gameObject.transform.position = player.gameObject.transform.position;
+        Debug.Log(player.gameObject.transform.position);
+        gameObject.transform.position = player.gameObject.transform.position + Vector3.up;
     }
     public override void endAffect()
     {
-        
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
+        return;
     }
 }

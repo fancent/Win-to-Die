@@ -61,6 +61,9 @@ public class HomingMissile : MonoBehaviour
         m_rigidbody.velocity = constspeed = Quaternion.Euler(new Vector3(-80, 15, 0)) //TODO: change this to "x" where z is normal
              * user.m_rigidbody.velocity*0.5f + user.m_rigidbody.velocity;
         findTarget(rotation);
+        HMLocked clone = Instantiate(hmlPrefeb);
+        clone.Initialize(hit_delay, target);
+        target.stat.LoadEffect(clone);
         ignited = true;
         flytimer = 0;
         Debug.Log("ign");
@@ -71,7 +74,7 @@ public class HomingMissile : MonoBehaviour
         Debug.Log("Attached");
         SpeedBoost clone = Instantiate(sbPrefab);
         clone.Initialize(boost_Duration, target);
-        clone.Begin();
+        target.stat.LoadEffect(clone);
     }
     void OnTriggerEnter(Collider c)
     {
@@ -103,8 +106,10 @@ public class HomingMissile : MonoBehaviour
             {
                 float remtime = hit_delay - flytimer;
                 m_rigidbody.velocity = target.m_rigidbody.velocity + (target.transform.position - m_rigidbody.transform.position) / remtime;
+                //if (Vector3.Distance(Vector3.zero, constspeed) > Vector3.Distance(Vector3.zero, m_rigidbody.velocity))
+                //    m_rigidbody.velocity *= (Vector3.Distance(Vector3.zero, constspeed) / Vector3.Distance(Vector3.zero, m_rigidbody.velocity));
             }
-            Debug.Log(flytimer);
+            //Debug.Log(flytimer);
         }
 
     }
