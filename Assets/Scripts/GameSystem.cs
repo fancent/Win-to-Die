@@ -9,7 +9,7 @@ public class GameSystem : MonoBehaviour
 {
     GameObject p1, p2;
     GameObject p1wintext, p2wintext;
-    GameObject startButton;
+    public GameObject startButton;
     bool start;
     bool paused;
     bool end;
@@ -37,9 +37,8 @@ public class GameSystem : MonoBehaviour
     void Start()
     {
         end = false;
-        p1 = GameObject.Find("LeftKart");
-        p2 = GameObject.Find("RightKart");
-        startButton = GameObject.Find("StartButton");
+        p1 = GameObject.Find("LeftFisherPrice");
+        p2 = GameObject.Find("RightFisherPrice");
         p1wintext = GameObject.Find("P1WINS");
         p2wintext = GameObject.Find("P2WINS");
         p1wintext.SetActive(false);
@@ -90,7 +89,7 @@ public class GameSystem : MonoBehaviour
 
     public void restart()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("TrackScene");
         init();
     }
     public void returnMenu()

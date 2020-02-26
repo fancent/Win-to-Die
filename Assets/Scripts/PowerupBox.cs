@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using VehicleBehaviour;
 
 public class PowerupBox : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class PowerupBox : MonoBehaviour
 
     void OnTriggerEnter(Collider c)
     {
-        Cart cart = c.gameObject.GetComponent<Cart>();
+        WheelVehicle cart = c.gameObject.GetComponent<WheelVehicle>();
         if (!cart)
             return;
         PowerUpSlot slot = cart.GetComponent<PowerUpSlot>();

@@ -27,7 +27,7 @@ public class BasicRocket : MonoBehaviour
     {
         m_rigidbody = gameObject.GetComponent<Rigidbody>();
         owner = user;
-        m_rigidbody.velocity = constspeed = Quaternion.Euler(rotation) * user.m_rigidbody.velocity * 1.2f + user.m_rigidbody.velocity;
+        m_rigidbody.velocity = constspeed = Quaternion.Euler(rotation) * user._rb.velocity * 1.2f + user._rb.velocity;
         ignited = true;
         Debug.Log("ign");
         Debug.Log(ignited);

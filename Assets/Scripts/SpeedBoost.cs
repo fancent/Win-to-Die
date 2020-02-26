@@ -8,9 +8,9 @@ public class SpeedBoost : Effect
     float original_speed;
     public override void bgnAffect()
     {
-        player.Cart_speedup(1.15f);
-        original_speed = player.Speed;
-        player.Speed *= 1.25f;
+        player.Cart_speedup();
+        // original_speed = player.Speed;
+        // player.Speed *= 1.25f;
     }
     public override void updAffect()
     {
@@ -18,6 +18,6 @@ public class SpeedBoost : Effect
     }
     public override void endAffect()
     {
-        player.Speed = original_speed;
+        // player.Speed = original_speed;
     }
 }

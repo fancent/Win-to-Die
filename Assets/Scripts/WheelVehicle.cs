@@ -38,6 +38,8 @@ namespace VehicleBehaviour {
         private Player player;
         private bool useItem;
         private float itemAim; 
+        public bool isEnded;
+        public bool isStarted;
         
         /* 
          *  Turn input curve: x real input, y value used
@@ -183,7 +185,7 @@ namespace VehicleBehaviour {
         [SerializeField] AudioSource boostSource;
         
         // Private variables set at the start
-        Rigidbody _rb;
+        public Rigidbody _rb;
         WheelCollider[] wheels;
 
         public void beginBoost()
@@ -198,11 +200,15 @@ namespace VehicleBehaviour {
             isEnded = true;
         }
 
-        public void Cart_speedup(float acc=1.2f)
+        public void Cart_speedup(float acc=1f)
         {
-            speed *= acc;
+            _rb.AddForce( transform.forward * boostForce * acc);
         }
-
+        public void Cart_speedup(Vector3 dir, float acc=1f)
+        {
+            _rb.AddForce( dir * boostForce * acc, ForceMode.Impulse);
+        }
+        
         // Init rigidbody, center of mass, wheels and more
         void Awake()
         {
@@ -210,8 +216,8 @@ namespace VehicleBehaviour {
             stat = gameObject.GetComponent<StatusList>();
             slot = gameObject.GetComponent<PowerUpSlot>();
             slot.Initialize(1, this);
-            bool isStarted = false;
-            bool isEnded = false;
+            isStarted = false;
+            isEnded = false;
         }
         
         void Start() {
@@ -259,7 +265,6 @@ namespace VehicleBehaviour {
         void FixedUpdate () {
             // Mesure current speed
             speed = transform.InverseTransformDirection(_rb.velocity).z * 3.6f;
-            
             // Get all the inputs!
             if (isPlayer) {
                 // Accelerate & brake
@@ -291,6 +296,9 @@ namespace VehicleBehaviour {
             {
                 wheel.brakeTorque = 0;
             }
+
+            // Constant acceleration
+            Cart_speedup(0.3f);
 
             // Use Item
             if (useItem)
