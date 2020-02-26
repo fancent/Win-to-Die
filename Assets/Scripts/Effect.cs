@@ -6,8 +6,8 @@ abstract public class Effect : MonoBehaviour
 {
     // Start is called before the first frame update
     public float duration;
-    public Cart player;
-    public float lifespan;//0: not initialized, 1: not beginned, 2: working, 3: ended, -1: errored
+    protected Cart player;
+    protected float lifespan;//0: not initialized, 1: not beginned, 2: working, 3: ended, -1: errored
     //UI stuff missing for now
 
     public void Awake()

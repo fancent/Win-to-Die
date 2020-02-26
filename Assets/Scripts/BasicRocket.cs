@@ -56,7 +56,11 @@ public class BasicRocket : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(m_rigidbody.velocity);
-        m_rigidbody.velocity = constspeed;
+        if(ignited)
+        {
+            m_rigidbody.velocity = constspeed;
+            Debug.Log(m_rigidbody.velocity);
+        }
+        
     }
 }

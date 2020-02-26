@@ -269,9 +269,9 @@ MonoBehaviour:
   slot: {fileID: 0}
   stat: {fileID: 0}
   slotAnchor: {fileID: 507366859}
-  inputMethod: 2
+  inputMethod: 0
   m_rigidbody: {fileID: 0}
-  speed: 2
+  speed: 1
   brake: 0
   beginned: 0
   ended: 0
@@ -410,6 +410,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 573923828722708996, guid: a5a0df6eeaf573842b1a5843e094c705,
+        type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: -125232607604150239, guid: 1dd31415de7aae5428869638d9154802,
+        type: 3}
     - target: {fileID: 4795287283422507600, guid: a5a0df6eeaf573842b1a5843e094c705,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1601,6 +1607,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: finishline
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: a3c4f0bbc4a614ffe996b80566c576fa,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3c4f0bbc4a614ffe996b80566c576fa, type: 3}
 --- !u!1001 &711725661
@@ -1729,9 +1740,9 @@ MonoBehaviour:
   slot: {fileID: 0}
   stat: {fileID: 0}
   slotAnchor: {fileID: 928848989}
-  inputMethod: 2
+  inputMethod: 1
   m_rigidbody: {fileID: 0}
-  speed: 2
+  speed: 1
   brake: 0
   beginned: 0
   ended: 0
