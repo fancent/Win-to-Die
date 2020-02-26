@@ -15,6 +15,14 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("MainScene");
     }
+    public void exitGame()
+    {
+        Application.Quit();
+    }
+
+    //Need code for controller to select buttons!
+
+
     // Update is called once per frame
     void Update()
     {
