@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VehicleBehaviour;
 
 public class PowerUpSlot: MonoBehaviour
 {
     PowerUp[] slot;
-    Cart player;
+    WheelVehicle player;
     int size;
     Transform[] rt;
     GameObject[] imgs;
@@ -19,7 +20,7 @@ public class PowerUpSlot: MonoBehaviour
     {
         
     }
-    public void Initialize(int siz, Cart pl)
+    public void Initialize(int siz, WheelVehicle pl)
     {
         canvas = GameObject.Find("MainUICanvas");
         size = siz;

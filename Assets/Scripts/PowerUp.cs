@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VehicleBehaviour;
 
 abstract public class PowerUp : MonoBehaviour
 {
@@ -15,7 +16,7 @@ abstract public class PowerUp : MonoBehaviour
     void Start()
     {
     }
-    public abstract void activate(Cart user);
+    public abstract void activate(WheelVehicle user);
     // Update is called once per frame
     void Update()
     {

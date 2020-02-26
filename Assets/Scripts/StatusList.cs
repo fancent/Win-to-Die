@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VehicleBehaviour;
 
 public class StatusList : MonoBehaviour
 {
     // Start is called before the first frame update
     Effect[] cur_status;
-    Cart player;
+    WheelVehicle player;
     void Start() 
     {
         cur_status = new Effect[10];

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Rewired;
+using VehicleBehaviour;
 
 public class GameSystem : MonoBehaviour
 {
@@ -49,8 +50,8 @@ public class GameSystem : MonoBehaviour
     public void beginrace()
     {
         start = true;
-        p1.GetComponent<Cart>().beginBoost();
-        p2.GetComponent<Cart>().beginBoost();
+        p1.GetComponent<WheelVehicle>().beginBoost();
+        p2.GetComponent<WheelVehicle>().beginBoost();
         Time.timeScale = 1f;
         startButton.SetActive(false);
     }
@@ -83,8 +84,8 @@ public class GameSystem : MonoBehaviour
         else
             Debug.LogError("Wrong Player id");
 
-        p1.GetComponent<Cart>().End();
-        p2.GetComponent<Cart>().End();
+        p1.GetComponent<WheelVehicle>().End();
+        p2.GetComponent<WheelVehicle>().End();
     }
 
     public void restart()
@@ -100,9 +101,9 @@ public class GameSystem : MonoBehaviour
     public void speedUp(string name, float speed=1.2f)
     {
         if (name == "Player1")
-            p1.GetComponent<Cart>().Cart_speedup(speed);
+            p1.GetComponent<WheelVehicle>().Cart_speedup(speed);
         else if (name == "Player2")
-            p2.GetComponent<Cart>().Cart_speedup(speed);
+            p2.GetComponent<WheelVehicle>().Cart_speedup(speed);
         else
              Debug.LogError("Wrong Player id");
     }

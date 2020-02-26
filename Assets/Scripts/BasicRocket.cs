@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VehicleBehaviour;
 
 public class BasicRocket : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class BasicRocket : MonoBehaviour
     public Rigidbody m_rigidbody;
     public Vector3 constspeed;
     public bool ignited;
-    public Cart owner;
+    public WheelVehicle owner;
     public SpeedBoost sbPrefab;//drag
     public float boost_Duration;//Modify outside
 
@@ -22,7 +23,7 @@ public class BasicRocket : MonoBehaviour
         
         
     }
-    public void ignite(Cart user, Vector3 rotation)
+    public void ignite(WheelVehicle user, Vector3 rotation)
     {
         m_rigidbody = gameObject.GetComponent<Rigidbody>();
         owner = user;
@@ -31,7 +32,7 @@ public class BasicRocket : MonoBehaviour
         Debug.Log("ign");
         Debug.Log(ignited);
     }
-    void attach(Cart target) {
+    void attach(WheelVehicle target) {
         Debug.Log("Attached");
         SpeedBoost clone= Instantiate(sbPrefab);
         clone.Initialize(boost_Duration, target);
@@ -43,7 +44,7 @@ public class BasicRocket : MonoBehaviour
         Debug.Log(ignited);
         if (!ignited)
             return;
-        Cart hit = c.gameObject.GetComponent<Cart>();
+        WheelVehicle hit = c.gameObject.GetComponent<WheelVehicle>();
         if(hit) {
             if (hit == owner)
                 return;

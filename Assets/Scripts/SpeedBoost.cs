@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VehicleBehaviour;
 
 public class SpeedBoost : Effect
 {
@@ -8,8 +9,8 @@ public class SpeedBoost : Effect
     public override void bgnAffect()
     {
         player.Cart_speedup(1.15f);
-        original_speed = player.speed;
-        player.speed *= 1.25f;
+        original_speed = player.Speed;
+        player.Speed *= 1.25f;
     }
     public override void updAffect()
     {
@@ -17,6 +18,6 @@ public class SpeedBoost : Effect
     }
     public override void endAffect()
     {
-        player.speed = original_speed;
+        player.Speed = original_speed;
     }
 }
