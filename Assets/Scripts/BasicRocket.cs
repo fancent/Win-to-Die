@@ -36,7 +36,7 @@ public class BasicRocket : MonoBehaviour
         Debug.Log("Attached");
         SpeedBoost clone= Instantiate(sbPrefab);
         clone.Initialize(boost_Duration, target);
-        clone.Begin();
+        target.stat.LoadEffect(clone);
     }
     void OnTriggerEnter(Collider c)
     {
@@ -57,7 +57,11 @@ public class BasicRocket : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(m_rigidbody.velocity);
-        m_rigidbody.velocity = constspeed;
+        if(ignited)
+        {
+            m_rigidbody.velocity = constspeed;
+            Debug.Log(m_rigidbody.velocity);
+        }
+
     }
 }
