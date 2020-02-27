@@ -196,7 +196,7 @@ namespace VehicleBehaviour {
 
         public void End()
         {
-            speed *= 0f;
+            Time.timeScale = 0f;
             isEnded = true;
         }
 
