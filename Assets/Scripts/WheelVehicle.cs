@@ -270,12 +270,17 @@ namespace VehicleBehaviour {
                 // Accelerate & brake
                 if (throttleInput != "" && throttleInput != null)
                 {
-                    throttle = (player.GetButton(throttleInput) ? 1 : 0); //- GetInput(brakeInput);
+                    throttle = ((player.GetButton(throttleInput) | Input.GetKey(KeyCode.W) ) ? 1 : 0); //- GetInput(brakeInput);
                 }
                 // Boost
                 // boosting = (GetInput(boostInput) > 0.5f);
                 // Turn
+                
                 steering = turnInputCurve.Evaluate(player.GetAxis(turnInput)) * steerAngle;
+                if (Input.GetKey(KeyCode.A))
+                    steering -= 5;
+                if (Input.GetKey(KeyCode.D))
+                    steering += 5;
                 // Use Item
                 useItem = player.GetButton("Use Item");
                 // Item Aim
