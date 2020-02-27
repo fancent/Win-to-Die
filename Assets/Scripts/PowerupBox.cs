@@ -19,7 +19,6 @@ public class PowerupBox : MonoBehaviour
 
         Debug.Log(c.gameObject);
         if (!cart){
-            Debug.Log("WHATTTTTTT");
             return;
         }
         PowerUpSlot slot = cart.GetComponent<PowerUpSlot>();
