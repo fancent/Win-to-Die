@@ -10,7 +10,7 @@ namespace PathCreation.Examples
         public float roadWidth = .4f;
         public float wallWidth = .4f;
 
-        [Range(0, 2f)]
+        [Range(0, 8f)]
         public float thickness = .15f;
         public bool flattenSurface;
 
