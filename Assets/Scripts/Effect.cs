@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using VehicleBehaviour;
 
-abstract public class Effect : MonoBehaviour
+public class Effect : MonoBehaviour
 {
     // Start is called before the first frame update
     public float duration;
@@ -19,9 +19,10 @@ abstract public class Effect : MonoBehaviour
     {
         
     }
-    public abstract void bgnAffect();
-    public abstract void updAffect();
-    public abstract void endAffect();
+    public virtual void bgnAffect() { }
+    public virtual void updAffect() { }
+    public virtual void endAffect() { }
+    public virtual void fxupdAffect() { }
 
     public void Initialize(float dur, WheelVehicle pl)
     {
@@ -64,4 +65,13 @@ abstract public class Effect : MonoBehaviour
                 Endlife(true);
         }
     }
+
+    private void FixedUpdate()
+    {
+        if (lifespan == 2)
+        {
+            fxupdAffect();
+        }
+    }
+
 }

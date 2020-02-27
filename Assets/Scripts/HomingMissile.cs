@@ -59,8 +59,8 @@ public class HomingMissile : MonoBehaviour
         Debug.Log("HM ignited~~~~");
         _rb = gameObject.GetComponent<Rigidbody>();
         owner = user;
-        _rb.velocity = constspeed = Quaternion.Euler(new Vector3(-80, 15, 0)) //TODO: change this to "x" where z is normal
-             * user._rb.velocity*0.5f + user._rb.velocity;
+        _rb.velocity = constspeed =  //TODO: change this to "x" where z is normal
+             (user._rb.transform.up *4f -user._rb.transform.right) * 2f + user._rb.velocity*0.5f + user._rb.velocity;
         findTarget(rotation);
         HMLocked clone = Instantiate(hmlPrefeb);
         clone.Initialize(hit_delay, target);
@@ -83,6 +83,7 @@ public class HomingMissile : MonoBehaviour
     {
         Debug.Log("Trig");
         Debug.Log(ignited);
+        Debug.Log(c.gameObject);
         if (!ignited)
             return;
         WheelVehicle hit = c.gameObject.GetComponent<WheelVehicle>();
@@ -94,6 +95,10 @@ public class HomingMissile : MonoBehaviour
             {
                 attach(hit);
             }
+        }
+        else
+        {
+            return;
         }
         Destroy(gameObject);
     }
@@ -110,7 +115,7 @@ public class HomingMissile : MonoBehaviour
             else
             {
                 float remtime = hit_delay - flytimer;
-                _rb.velocity = target._rb.velocity + (target.transform.position - _rb.transform.position) / remtime;
+                _rb.velocity = target._rb.velocity + (target.transform.position + Vector3.up - _rb.transform.position) / remtime;
             }
             Debug.Log(flytimer);
         }

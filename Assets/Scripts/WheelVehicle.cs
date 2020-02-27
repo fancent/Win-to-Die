@@ -208,6 +208,14 @@ namespace VehicleBehaviour {
         {
             _rb.AddForce( dir * boostForce * acc, ForceMode.Impulse);
         }
+
+        public void Cart_Turn(Vector3 t)
+        {
+            Debug.Log("torque");
+            Debug.Log(t);
+            _rb.AddTorque(t, ForceMode.VelocityChange);
+        }
+
         
         // Init rigidbody, center of mass, wheels and more
         void Awake()
@@ -303,7 +311,7 @@ namespace VehicleBehaviour {
             }
 
             // Constant acceleration
-            Cart_speedup(0.3f);
+            Cart_speedup(2.5f);
 
             // Use Item
             if (useItem)

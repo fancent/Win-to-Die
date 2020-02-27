@@ -18,7 +18,8 @@ public class Item_HomingMissile : PowerUp
     }
     override public void activate(WheelVehicle user)
     {
-        HomingMissile clone = Instantiate(prefab, user.gameObject.transform.position + Vector3.up, user.gameObject.transform.rotation);
+        Debug.Log("called act");
+        HomingMissile clone = Instantiate(prefab, user.gameObject.transform.position + 5*Vector3.up, user.gameObject.transform.rotation);
         clone.ignite(user, aim.rot);
     }
 

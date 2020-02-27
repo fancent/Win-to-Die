@@ -7,6 +7,7 @@ using Rewired;
 public class MainMenu : MonoBehaviour
 {
     private Player player;
+    public GameObject loadingScreen;
     void Awake()
     {
         player = ReInput.players.GetPlayer(0);
@@ -19,6 +20,8 @@ public class MainMenu : MonoBehaviour
 
     public void beginGame()
     {
+        
+        loadingScreen.SetActive(true);
         SceneManager.LoadScene("TrackScene");
     }
     public void exitGame()
