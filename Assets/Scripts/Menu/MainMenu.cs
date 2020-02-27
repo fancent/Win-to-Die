@@ -2,9 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Rewired;
 
 public class MainMenu : MonoBehaviour
 {
+    private Player player;
+    void Awake()
+    {
+        player = ReInput.players.GetPlayer(0);
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -13,7 +19,7 @@ public class MainMenu : MonoBehaviour
 
     public void beginGame()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("TrackScene");
     }
     public void exitGame()
     {
@@ -26,6 +32,7 @@ public class MainMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (player.GetButton("Accelerate"))
+            beginGame();
     }
 }
