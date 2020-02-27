@@ -40,7 +40,8 @@ public class WallMechanics : MonoBehaviour
         Vector3 norm = -other.GetContact(0).normal.normalized;
         Vector3 indir =   (other.GetContact(0).point) - (w.transform.position);
         Vector3 dir =(indir - 2*Vector3.Dot(indir, norm)*norm);
-        dir = (new Vector3(dir.x, 0, dir.z)).normalized;
+        dir = (new Vector3(dir.x, -0.6f* dir.y, dir.z)).normalized;
+        Debug.Log(w);
         Debug.Log(norm);
         Debug.Log(other.GetContact(0).point);
         Debug.Log(w.transform.position);
@@ -48,6 +49,6 @@ public class WallMechanics : MonoBehaviour
         Debug.Log(dir);
         if(w == null)
             return;
-        w.Cart_speedup(dir, 2f);
+        w.Cart_speedup(dir, 1.9f* Mathf.Pow(Vector3.Distance(Vector3.zero, w._rb.velocity), 0.3f));
     }
 }
