@@ -316,6 +316,16 @@ namespace VehicleBehaviour {
                 wheel.brakeTorque = 0;
             }
 
+            // Enables friction
+            foreach (WheelCollider wheel in wheels)
+            {
+                _rb.drag=0;
+                WheelHit hit;
+                if (wheel.GetGroundHit(out hit))
+                {
+                    _rb.drag += hit.collider.material.dynamicFriction;
+                }
+            }
             // Constant acceleration
             Cart_speedup(2.5f);
 
