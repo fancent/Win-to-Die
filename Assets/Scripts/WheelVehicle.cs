@@ -215,7 +215,13 @@ namespace VehicleBehaviour {
             Debug.Log(t);
             _rb.AddTorque(t, ForceMode.VelocityChange);
         }
-
+        public void Cart_LookForward()
+        {
+            foreach (WheelCollider wheel in turnWheel)
+            {
+                wheel.steerAngle = 0;
+            }
+        }
         
         // Init rigidbody, center of mass, wheels and more
         void Awake()
