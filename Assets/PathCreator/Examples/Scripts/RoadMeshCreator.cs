@@ -409,6 +409,7 @@ namespace PathCreation.Examples
             holder.transform.parent = meshHolder.transform;
             holder.gameObject.AddComponent<MeshFilter>();
             holder.gameObject.AddComponent<MeshRenderer>();
+            holder.gameObject.AddComponent<MeshCollider>();
             holder.transform.rotation = Quaternion.identity;
             holder.transform.position = Vector3.zero;
             holder.transform.localScale = Vector3.one;
@@ -423,23 +424,18 @@ namespace PathCreation.Examples
                 meshHolder = new GameObject(this.transform.name + " Mesh Holder");
                 grassHolder = new GameObject("Grass");
                 setupMeshHolder(grassHolder);
-                //grassHolder.tag = "Grass";
 
                 roadHolder = new GameObject("Road");
                 setupMeshHolder(roadHolder);
-                //roadHolder.tag = "Road";
 
                 leftWallHolder = new GameObject("LeftWall");
                 setupMeshHolder(leftWallHolder);
-                //leftWallHolder.tag = "Left Wall";
 
                 rightWallHolder = new GameObject("RightWall");
                 setupMeshHolder(rightWallHolder);
-                //rightWallHolder.tag = "Righ tWall";
 
                 invisibleHolder = new GameObject("Invisible");
                 setupMeshHolder(invisibleHolder);
-                //invisibleHolder.tag = "Invisible";
 
             }
 
@@ -458,18 +454,24 @@ namespace PathCreation.Examples
 
             grassMeshRenderer = grassHolder.GetComponent<MeshRenderer>();
             grassMeshFilter = grassHolder.GetComponent<MeshFilter>();
+            MeshCollider grassCollider = grassHolder.GetComponent<MeshCollider>();
 
             roadMeshRenderer = roadHolder.GetComponent<MeshRenderer>();
             roadMeshFilter = roadHolder.GetComponent<MeshFilter>();
+            MeshCollider roadCollider = roadHolder.GetComponent<MeshCollider>();
 
             leftWallRenderer = leftWallHolder.GetComponent<MeshRenderer>();
             leftWallFilter = leftWallHolder.GetComponent<MeshFilter>();
+            MeshCollider leftWallCollider = leftWallHolder.GetComponent<MeshCollider>();
 
             rightWallRenderer = rightWallHolder.GetComponent<MeshRenderer>();
             rightWallFilter = rightWallHolder.GetComponent<MeshFilter>();
+            MeshCollider rightWallCollider = rightWallHolder.GetComponent<MeshCollider>();
+
 
             invisibleRenderer = invisibleHolder.GetComponent<MeshRenderer>();
             invisibleFilter = invisibleHolder.GetComponent<MeshFilter>();
+            MeshCollider invisibleCollider = invisibleHolder.GetComponent<MeshCollider>();
 
             if (grassMesh == null)
             {
@@ -501,6 +503,12 @@ namespace PathCreation.Examples
             leftWallFilter.sharedMesh = leftWallMesh;
             rightWallFilter.sharedMesh = rightWallMesh;
             invisibleFilter.sharedMesh = invisibleMesh;
+
+            grassCollider.sharedMesh = grassMesh;
+            roadCollider.sharedMesh = roadMesh;
+            leftWallCollider.sharedMesh = leftWallMesh;
+            rightWallCollider.sharedMesh = rightWallMesh;
+            invisibleCollider.sharedMesh = invisibleMesh;
 
         }
 
