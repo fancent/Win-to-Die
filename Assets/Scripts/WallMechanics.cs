@@ -61,8 +61,8 @@ public class WallMechanics : MonoBehaviour
         if (w == null)
             return;
         w._rb.rotation = Quaternion.LookRotation(fwdF.normalized);
-        w.Cart_speedup(12f * dir + 0.5f* fwdF, 0.25f);
-        w.Cart_speedup(2.5f * fwdF, Mathf.Pow(Vector3.Distance(Vector3.zero, w._rb.velocity), 0.25f) *1f);
+        w.Cart_speedup(15f * dir + 1f* fwdF, 0.25f);
+        w.Cart_speedup(3f * fwdF, Mathf.Pow(Vector3.Distance(Vector3.zero, w._rb.velocity), 0.25f) *1f);
 
         _source.pitch = Random.Range(0.8f, 1.2f);
         _source.Play();
