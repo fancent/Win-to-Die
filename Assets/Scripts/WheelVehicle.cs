@@ -327,7 +327,7 @@ namespace VehicleBehaviour {
                 }
             }
             // Constant acceleration
-            Cart_speedup(2.5f);
+            Cart_speedup(5f);
 
             // Use Item
             if (useItem)
