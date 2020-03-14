@@ -64,7 +64,7 @@ public class WallMechanics : MonoBehaviour
         w._rb.rotation = Quaternion.LookRotation((7f*fwdF.normalized +norm).normalized);
         w.Cart_LookForward();
         w._rb.velocity = w._rb.velocity.normalized* absS;
-        w.Cart_speedup(1f* fwdF + 0.3f*w._rb.velocity.normalized);
+        w.Cart_speedup(2f* fwdF + 0.3f*w._rb.velocity.normalized);
 
         //w.Cart_speedup(15f * dir + 1f* fwdF, 0.25f);
         //w.Cart_speedup(3f * fwdF, Mathf.Pow(Vector3.Distance(Vector3.zero, w._rb.velocity), 0.25f) *1f);

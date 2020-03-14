@@ -20,10 +20,18 @@ public class MainMenu : MonoBehaviour
 
     public void beginGame()
     {
-        
         loadingScreen.SetActive(true);
+        waiter();
         SceneManager.LoadScene("TrackScene");
     }
+
+
+    IEnumerator waiter()
+    {
+        //Wait for 4 seconds
+        yield return new WaitForSecondsRealtime(10f);
+    }
+
     public void exitGame()
     {
         Application.Quit();
