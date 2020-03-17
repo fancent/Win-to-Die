@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Rewired;
+using VehicleBehaviour;
 
 public class GameSystem : MonoBehaviour
 {
     GameObject p1, p2;
     GameObject p1wintext, p2wintext;
-    GameObject startButton;
+    public GameObject startButton;
     bool start;
     bool paused;
     bool end;
@@ -36,9 +37,8 @@ public class GameSystem : MonoBehaviour
     void Start()
     {
         end = false;
-        p1 = GameObject.Find("LeftKart");
-        p2 = GameObject.Find("RightKart");
-        startButton = GameObject.Find("StartButton");
+        p1 = GameObject.Find("LeftFisherPrice");
+        p2 = GameObject.Find("RightFisherPrice");
         p1wintext = GameObject.Find("P1WINS");
         p2wintext = GameObject.Find("P2WINS");
         p1wintext.SetActive(false);
@@ -49,8 +49,8 @@ public class GameSystem : MonoBehaviour
     public void beginrace()
     {
         start = true;
-        p1.GetComponent<Cart>().beginBoost();
-        p2.GetComponent<Cart>().beginBoost();
+        p1.GetComponent<WheelVehicle>().beginBoost();
+        p2.GetComponent<WheelVehicle>().beginBoost();
         Time.timeScale = 1f;
         startButton.SetActive(false);
     }
@@ -83,13 +83,13 @@ public class GameSystem : MonoBehaviour
         else
             Debug.LogError("Wrong Player id");
 
-        p1.GetComponent<Cart>().End();
-        p2.GetComponent<Cart>().End();
+        p1.GetComponent<WheelVehicle>().End();
+        p2.GetComponent<WheelVehicle>().End();
     }
 
     public void restart()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("TrackScene");
         init();
     }
     public void returnMenu()
@@ -100,9 +100,9 @@ public class GameSystem : MonoBehaviour
     public void speedUp(string name, float speed=1.2f)
     {
         if (name == "Player1")
-            p1.GetComponent<Cart>().Cart_speedup(speed);
+            p1.GetComponent<WheelVehicle>().Cart_speedup(speed);
         else if (name == "Player2")
-            p2.GetComponent<Cart>().Cart_speedup(speed);
+            p2.GetComponent<WheelVehicle>().Cart_speedup(speed);
         else
              Debug.LogError("Wrong Player id");
     }

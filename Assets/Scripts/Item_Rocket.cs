@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VehicleBehaviour;
 
 public class Item_Rocket : PowerUp
 {
@@ -15,7 +16,7 @@ public class Item_Rocket : PowerUp
     {
         
     }
-    override public void activate(Cart user)
+    override public void activate(WheelVehicle user)
     {
         BasicRocket clone = Instantiate(prefab, user.gameObject.transform.position + Vector3.up, user.gameObject.transform.rotation);
         clone.ignite(user, aim.rot);
