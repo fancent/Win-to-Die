@@ -234,24 +234,20 @@ namespace PathCreation.Examples
                 side = -1;
             }
 
-            Vector3[] verts = new Vector3[path.NumPoints * 8];
+            Vector3[] verts = new Vector3[path.NumPoints * 4];
             Vector2[] uvs = new Vector2[verts.Length];
             Vector3[] normals = new Vector3[verts.Length];
 
             int numTris = 2 * (path.NumPoints - 1) + ((path.isClosedLoop) ? 2 : 0);
             int[] topTriangles = new int[numTris * 3];
             int[] underTriangles = new int[numTris * 3];
-            int[] sideTriangles = new int[numTris * 2 * 3];
+            int[] sideTriangles = new int[numTris * 3 * 2];
 
             int vertIndex = 0;
             int triIndex = 0;
 
-            // Vertices for the top of the road are layed out:
-            // 0  1
-            // 8  9
-            // and so on... So the triangle map 0,8,1 for example, defines a triangle from top left to bottom left to bottom right.
-            int[] triangleMap = { 0, 8, 1, 1, 8, 9 };
-            int[] sidesTriangleMap = { 4, 6, 14, 12, 4, 14, 5, 15, 7, 13, 15, 5 };
+            int[] triangleMap = { 0, 4, 1, 1, 4, 5 };
+            int[] sidesTriangleMap = { 2, 6, 0, 0, 6, 4, 1, 5, 3, 3, 5, 7};
 
             bool usePathNormals = !(path.space == PathSpace.xyz && flattenSurface);
             for (int i = 0; i < path.NumPoints; i++)
@@ -270,27 +266,21 @@ namespace PathCreation.Examples
                 verts[vertIndex + 2] = vertSideA;
                 verts[vertIndex + 3] = vertSideB;
 
-                // Duplicate vertices to get flat shading for sides of road
-                verts[vertIndex + 4] = verts[vertIndex + 0];
-                verts[vertIndex + 5] = verts[vertIndex + 1];
-                verts[vertIndex + 6] = verts[vertIndex + 2];
-                verts[vertIndex + 7] = verts[vertIndex + 3];
-
                 // Set uv on y axis to path time (0 at start of path, up to 1 at end of path)
-                uvs[vertIndex + 0] = new Vector2(0, path.times[i]);
-                uvs[vertIndex + 1] = new Vector2(1, path.times[i]);
-
+                float wall_percentage = wallHeight / (wallHeight*2 + wallWidth);
+                uvs[vertIndex + 0] = new Vector2(wall_percentage, path.times[i]);
+                uvs[vertIndex + 1] = new Vector2(1 - wall_percentage, path.times[i]);
+                uvs[vertIndex + 2] = new Vector2(0, path.times[i]);
+                uvs[vertIndex + 3] = new Vector2(1, path.times[i]);
+                
                 // Top of road normals
                 normals[vertIndex + 0] = localUp;
                 normals[vertIndex + 1] = localUp;
-                // Bottom of road normals
-                normals[vertIndex + 2] = -localUp;
-                normals[vertIndex + 3] = -localUp;
+
                 // Sides of road normals
-                normals[vertIndex + 4] = -localRight;
-                normals[vertIndex + 5] = localRight;
-                normals[vertIndex + 6] = -localRight;
-                normals[vertIndex + 7] = localRight;
+                normals[vertIndex + 2] = -localRight;
+                normals[vertIndex + 3] = localRight;
+
 
                 // Set triangle indices
                 if (i < path.NumPoints - 1 || path.isClosedLoop)
@@ -308,7 +298,7 @@ namespace PathCreation.Examples
 
                 }
 
-                vertIndex += 8;
+                vertIndex += 4;
                 triIndex += 6;
             }
             m.Clear();
