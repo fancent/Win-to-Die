@@ -8,7 +8,7 @@ namespace PathCreation.Examples
     public class WallTangent : MonoBehaviour
     {
         public PathCreator pc;
-        Vector3 OnCollisionEnter(Collision collisionInfo)
+        public Vector3 getTan(Collision collisionInfo)
         {
             foreach (ContactPoint cp in collisionInfo.contacts)
             {

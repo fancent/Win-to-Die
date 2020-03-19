@@ -4767,5 +4767,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 5
-  inst_boost: 1.1
-  speed_increase: 1.05
+  lifespan: 0
+  inst_boost: 15
+  speed_increase: 1.7

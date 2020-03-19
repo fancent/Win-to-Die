@@ -204,6 +204,11 @@ namespace VehicleBehaviour {
         {
             _rb.AddForce( transform.forward * boostForce * acc);
         }
+
+        public void Cart_Boost(float acc = 1f)
+        {
+            _rb.AddForce(transform.forward * boostForce * acc, ForceMode.Impulse);
+        }
         public void Cart_speedup(Vector3 dir, float acc=1f)
         {
             _rb.AddForce( dir * boostForce * acc, ForceMode.Impulse);
@@ -296,7 +301,7 @@ namespace VehicleBehaviour {
                 if (Input.GetKey(KeyCode.D))
                     steering += 5;
                 // Use Item
-                useItem = player.GetButton("Use Item");
+                useItem = player.GetButton("Use Item") || Input.GetKey(KeyCode.E);
                 // Item Aim
                 itemAim = player.GetAxis("Aim Item");
                 // Dirft

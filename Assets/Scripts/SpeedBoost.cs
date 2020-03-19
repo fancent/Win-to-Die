@@ -9,16 +9,14 @@ public class SpeedBoost : Effect
     public float inst_boost=1.15f, speed_increase=1.25f;
     public override void bgnAffect()
     {
-        player.Cart_speedup(inst_boost);
-        original_speed = player._rb.velocity;
-        player._rb.velocity *= 1.25f;
+        player.Cart_Boost(inst_boost);        
     }
     public override void updAffect()
     {
+        player.Cart_speedup(speed_increase);
         gameObject.transform.position = player.gameObject.transform.position;
     }
     public override void endAffect()
     {
-        player._rb.velocity = original_speed;
     }
 }

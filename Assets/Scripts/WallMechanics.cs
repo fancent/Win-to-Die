@@ -22,6 +22,11 @@ public class WallMechanics : MonoBehaviour
 
     }
 
+    void OnCollisionStay(Collision other)
+    {
+        Debug.Log("Stay");
+
+    }
     void OnCollisionEnter(Collision other)
     {
         // GameSystem g_sys = GameObject.Find("GameSystem").GetComponent<GameSystem>();
@@ -52,19 +57,21 @@ public class WallMechanics : MonoBehaviour
         dir.y = Mathf.Pow(co * (dir.x * dir.x + dir.z * dir.z), 0.5f);
         if (dir.y > 0)
             dir.y *= -1;
+        /*
         Debug.Log(w);
         Debug.Log(norm);
         Debug.Log(other.GetContact(0).point);
         Debug.Log(w.transform.position);
         Debug.Log(indir);
         Debug.Log(dir);
+        */    
         if (w == null)
             return;
         float absS = Vector3.Distance(w._rb.velocity, Vector3.zero);
         w._rb.rotation = Quaternion.LookRotation((7f*fwdF.normalized +norm).normalized);
         w.Cart_LookForward();
         w._rb.velocity = w._rb.velocity.normalized* absS;
-        w.Cart_speedup(2f* fwdF + 0.3f*w._rb.velocity.normalized);
+        w.Cart_speedup(2.5f* dir + 0.14f*absS*w._rb.velocity.normalized+ 0.14f * norm * absS + 0.14f * fwdF* Mathf.Pow(absS, 0.5f));
 
         //w.Cart_speedup(15f * dir + 1f* fwdF, 0.25f);
         //w.Cart_speedup(3f * fwdF, Mathf.Pow(Vector3.Distance(Vector3.zero, w._rb.velocity), 0.25f) *1f);

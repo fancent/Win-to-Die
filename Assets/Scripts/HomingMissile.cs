@@ -60,7 +60,7 @@ public class HomingMissile : MonoBehaviour
         _rb = gameObject.GetComponent<Rigidbody>();
         owner = user;
         _rb.velocity = constspeed =  //TODO: change this to "x" where z is normal
-             (user._rb.transform.up *4f -user._rb.transform.right) * 2f + user._rb.velocity*0.5f + user._rb.velocity;
+             (user._rb.transform.up *7f -user._rb.transform.right) * 2f + user._rb.velocity*0.5f + user._rb.velocity;
         findTarget(rotation);
         HMLocked clone = Instantiate(hmlPrefeb);
         clone.Initialize(hit_delay, target);
@@ -117,6 +117,7 @@ public class HomingMissile : MonoBehaviour
                 float remtime = hit_delay - flytimer;
                 _rb.velocity = target._rb.velocity + (target.transform.position + Vector3.up - _rb.transform.position) / remtime;
             }
+            gameObject.transform.rotation = Quaternion.LookRotation(_rb.velocity);
             Debug.Log(flytimer);
         }
 

@@ -107,6 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_rigidbody: {fileID: 0}
+  constspeed: {x: 0, y: 0, z: 0}
   ignited: 0
   owner: {fileID: 0}
   sbPrefab: {fileID: -8426631131252424823, guid: 0dc5a36ba4f81f24ca9492646ee9f7e8,
