@@ -296,12 +296,12 @@ namespace VehicleBehaviour {
                 // Turn
                 
                 steering = turnInputCurve.Evaluate(player.GetAxis(turnInput)) * steerAngle;
-                if (Input.GetKey(KeyCode.A))
-                    steering -= 5;
-                if (Input.GetKey(KeyCode.D))
-                    steering += 5;
+                if ((playerId == 0 && Input.GetKey(KeyCode.A)) || (playerId == 1 && Input.GetKey(KeyCode.LeftArrow)))
+                    steering -= steerAngle;
+                if ((playerId == 0 && Input.GetKey(KeyCode.D)) || (playerId == 1 && Input.GetKey(KeyCode.RightArrow)))
+                    steering += steerAngle;
                 // Use Item
-                useItem = player.GetButton("Use Item") || Input.GetKey(KeyCode.E);
+                useItem = player.GetButton("Use Item") || (playerId ==0 &&Input.GetKey(KeyCode.E)) || (playerId == 1&& Input.GetKey(KeyCode.RightControl));
                 // Item Aim
                 itemAim = player.GetAxis("Aim Item");
                 // Dirft
