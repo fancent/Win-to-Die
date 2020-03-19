@@ -16,11 +16,11 @@ public class CameraFollow : MonoBehaviour
         // camLocation.position -= new Vector3(-0.005f,-0.005f,0f);
         if (currSpeed < self._rb.velocity.magnitude)
         {
-            camLocation.localPosition = new Vector3(0, camLocation.localPosition.y + self._rb.velocity.magnitude * 0.00005f, camLocation.localPosition.z - self._rb.velocity.magnitude * 0.0001f);
+            camLocation.localPosition = new Vector3(0, Mathf.Min(3, camLocation.localPosition.y + self._rb.velocity.magnitude * 0.0001f), Mathf.Min(-5, camLocation.localPosition.z - self._rb.velocity.magnitude * 0.0005f));
         }
         else 
         {
-            camLocation.localPosition = new Vector3(0, Mathf.Max(3, camLocation.localPosition.y - self._rb.velocity.magnitude * 0.00005f), Mathf.Max(-5, camLocation.localPosition.z + self._rb.velocity.magnitude * 0.0001f));
+            camLocation.localPosition = new Vector3(0, Mathf.Max(3, camLocation.localPosition.y - self._rb.velocity.magnitude * 0.0001f), Mathf.Max(-5, camLocation.localPosition.z + self._rb.velocity.magnitude * 0.0005f));
         }
         
         transform.position = Vector3.Lerp(transform.position, camLocation.position, Speed * Time.deltaTime);
