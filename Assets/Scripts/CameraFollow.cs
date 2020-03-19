@@ -20,7 +20,7 @@ public class CameraFollow : MonoBehaviour
         }
         else 
         {
-            camLocation.localPosition = new Vector3(0, Mathf.Max(3, camLocation.localPosition.y - self._rb.velocity.magnitude * 0.0001f), Mathf.Max(-5, camLocation.localPosition.z + self._rb.velocity.magnitude * 0.0005f));
+            camLocation.localPosition = new Vector3(0, Mathf.Max(3, camLocation.localPosition.y - self._rb.velocity.magnitude * 0.0001f), Mathf.Min(-5, camLocation.localPosition.z + self._rb.velocity.magnitude * 0.0005f));
         }
         
         transform.position = Vector3.Lerp(transform.position, camLocation.position, Speed * Time.deltaTime);
