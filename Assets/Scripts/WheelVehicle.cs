@@ -333,7 +333,8 @@ namespace VehicleBehaviour {
             }
             // Constant acceleration
             Cart_speedup(6f);
-
+            if (speed > 270)
+                _rb.velocity = _rb.velocity.normalized * 75;
             // Use Item
             if (useItem)
             {

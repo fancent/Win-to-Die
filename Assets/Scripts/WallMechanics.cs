@@ -67,11 +67,11 @@ public class WallMechanics : MonoBehaviour
         */    
         if (w == null)
             return;
-        float absS = Vector3.Distance(w._rb.velocity, Vector3.zero);
+        float absS = w.Speed/3.6f;
         w._rb.rotation = Quaternion.LookRotation((7f*fwdF.normalized +norm).normalized);
         w.Cart_LookForward();
         w._rb.velocity = w._rb.velocity.normalized* absS;
-        w.Cart_speedup(2.5f* dir + 0.14f*absS*w._rb.velocity.normalized+ 0.14f * norm * absS + 0.14f * fwdF* Mathf.Pow(absS, 0.5f));
+        w.Cart_speedup(2.5f* dir + 0.14f*absS*w._rb.velocity.normalized+ 0.17f * norm * Mathf.Pow(absS, 0.8f) + 0.14f * fwdF* Mathf.Pow(absS, 0.5f));
 
         //w.Cart_speedup(15f * dir + 1f* fwdF, 0.25f);
         //w.Cart_speedup(3f * fwdF, Mathf.Pow(Vector3.Distance(Vector3.zero, w._rb.velocity), 0.25f) *1f);
