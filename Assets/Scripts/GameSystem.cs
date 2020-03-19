@@ -83,8 +83,8 @@ public class GameSystem : MonoBehaviour
         else
             Debug.LogError("Wrong Player id");
 
-        p1.GetComponent<WheelVehicle>().End();
-        p2.GetComponent<WheelVehicle>().End();
+        p1.GetComponent<WheelVehicle>().End(name == "Player1");
+        p2.GetComponent<WheelVehicle>().End(name == "Player2");
     }
 
     public void restart()

@@ -38,7 +38,7 @@ namespace VehicleBehaviour {
         private Player player;
         private bool useItem;
         private float itemAim; 
-        public bool isEnded;
+        public int isEnded=0;
         public bool isStarted;
         
         /* 
@@ -194,10 +194,10 @@ namespace VehicleBehaviour {
             speed = 0.1f;
         }
 
-        public void End()
+        public void End(bool Win)
         {
-            Time.timeScale = 0f;
-            isEnded = true;
+            //Time.timeScale = 0f;
+            isEnded = Win?1:-1;
         }
 
         public void Cart_speedup(float acc=1f)
@@ -236,7 +236,7 @@ namespace VehicleBehaviour {
             slot = gameObject.GetComponent<PowerUpSlot>();
             slot.Initialize(1, this);
             isStarted = false;
-            isEnded = false;
+            isEnded = 0;
         }
         
         void Start() {
@@ -285,7 +285,7 @@ namespace VehicleBehaviour {
             // Mesure current speed
             speed = transform.InverseTransformDirection(_rb.velocity).z * 3.6f;
             // Get all the inputs!
-            if (isPlayer) {
+            if (isPlayer && isEnded!=-1) {
                 // Accelerate & brake
                 if (throttleInput != "" && throttleInput != null)
                 {
@@ -332,9 +332,15 @@ namespace VehicleBehaviour {
                 }
             }
             // Constant acceleration
-            Cart_speedup(6f);
-            if (speed > 270)
-                _rb.velocity = _rb.velocity.normalized * 75;
+            if(isEnded == 0)
+            {
+                Cart_speedup(6f);
+                if (speed > 270)
+                    _rb.velocity = _rb.velocity.normalized * 75;
+            }
+            if (isEnded == 1)
+                _rb.velocity = Vector3.zero;
+                
             // Use Item
             if (useItem)
             {

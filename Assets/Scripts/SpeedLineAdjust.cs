@@ -18,6 +18,6 @@ public class SpeedLineAdjust : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        e.rateOverTime = v.Speed/10f;
+        e.rateOverTime = Mathf.Max(0f, v.Speed-50)/5f;
     }
 }
