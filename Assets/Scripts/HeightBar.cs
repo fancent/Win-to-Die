@@ -23,8 +23,10 @@ public class HeightBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         float currentHeight = cart.transform.position.y;
         float fillAmount = (currentHeight-minHeight)/(maxHeight-minHeight);
+        //Debug.Log(fillAmount);
         slider.value = fillAmount;
         fill.color = Color.Lerp(end, start, fillAmount);
     }

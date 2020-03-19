@@ -118,7 +118,7 @@ public class HomingMissile : MonoBehaviour
                 _rb.velocity = target._rb.velocity + (target.transform.position + Vector3.up - _rb.transform.position) / remtime;
             }
             gameObject.transform.rotation = Quaternion.LookRotation(_rb.velocity);
-            Debug.Log(flytimer);
+            //Debug.Log(flytimer);
         }
 
     }
