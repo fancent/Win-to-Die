@@ -335,7 +335,7 @@ namespace VehicleBehaviour {
             if(isEnded == 0)
             {
                 Cart_speedup(6f);
-                if (speed > 270)
+                if (speed > 270)//SpeedCap
                     _rb.velocity = _rb.velocity.normalized * 75;
             }
             if (isEnded == 1)

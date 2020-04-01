@@ -16,6 +16,6 @@ public class SpeedMeter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        t.text = $"{(int)(v.Speed/1.8)} km/h";
+        t.text = $"{(int)(v.Speed/1.8)}";
     }
 }
