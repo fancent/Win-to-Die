@@ -15,21 +15,22 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     public void beginGame()
     {
         loadingScreen.SetActive(true);
-        waiter();
-        SceneManager.LoadScene("TrackScene");
+        StartCoroutine(waiter());
     }
 
 
     IEnumerator waiter()
     {
-        //Wait for 4 seconds
-        yield return new WaitForSecondsRealtime(10f);
+        //Wait for 5 seconds
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("TrackScene");
+
     }
 
     public void exitGame()
