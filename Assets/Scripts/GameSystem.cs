@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Rewired;
 using VehicleBehaviour;
@@ -10,9 +11,11 @@ public class GameSystem : MonoBehaviour
     GameObject p1, p2;
     GameObject p1wintext, p2wintext;
     public GameObject startButton;
+    public Text countdown;
     bool start;
     bool paused;
     bool end;
+    bool beginning;
     AudioSource explode;
 
 
@@ -27,15 +30,18 @@ public class GameSystem : MonoBehaviour
 
     void init()
     {
+        countdown.gameObject.SetActive(false);
+        beginning = false;
         start = false;
         Time.timeScale = 0f;
         pauseUI.SetActive(false);
         paused = false;
-
+        beginrace();
     }
     // Start is called before the first frame update
     void Start()
     {
+        countdown.gameObject.SetActive(false);
         end = false;
         p1 = GameObject.Find("LeftFisherPrice");
         p2 = GameObject.Find("RightFisherPrice");
@@ -46,24 +52,47 @@ public class GameSystem : MonoBehaviour
         explode = gameObject.GetComponent<AudioSource>();
         init();
     }
+
+    IEnumerator cd()
+    {
+        beginning = true;
+        yield return new WaitForSecondsRealtime(1f);
+        countdown.gameObject.SetActive(true);
+        countdown.color = new Color(255/255f, 205 / 255f, 74 / 255f, 255 / 255f);
+        countdown.fontSize = 130;
+        countdown.text = "3";
+        yield return new WaitForSecondsRealtime(1);
+        countdown.fontSize = 140;
+        countdown.text = "2";
+        yield return new WaitForSecondsRealtime(1);
+        countdown.fontSize = 150;
+        countdown.text = "1";
+        yield return new WaitForSecondsRealtime(1);
+        Time.timeScale = 1f;
+        countdown.text = "GO!";
+        countdown.color = new Color(67 / 255f, 231 / 255f, 181 / 255f, 255 / 255f);
+        countdown.fontSize = 160;
+        beginning = false;
+        yield return new WaitForSecondsRealtime(1.5f);
+        countdown.gameObject.SetActive(false);
+    }
     public void beginrace()
     {
-        start = true;
+        
         p1.GetComponent<WheelVehicle>().beginBoost();
         p2.GetComponent<WheelVehicle>().beginBoost();
-        Time.timeScale = 1f;
+        start = true;
+        StartCoroutine(cd());
         startButton.SetActive(false);
     }
     public void resume()
     {
-        
-        Time.timeScale = 1f;
+        StartCoroutine(cd());
         pauseUI.SetActive(false);
         paused = false;
     }
     public void pause()
-    {
-        
+    { 
         Time.timeScale = 0f;
         pauseUI.SetActive(true);
         paused = true;
@@ -89,11 +118,13 @@ public class GameSystem : MonoBehaviour
 
     public void restart()
     {
+        countdown.gameObject.SetActive(false);
         SceneManager.LoadScene("TrackScene");
         init();
     }
     public void returnMenu()
     {
+
         SceneManager.LoadScene("Menu");
     }
 
@@ -111,6 +142,8 @@ public class GameSystem : MonoBehaviour
     {
         if (player.GetButtonDown("Start Game") || Input.GetKeyDown(KeyCode.P))
         {
+            if (beginning)
+                return;
             if (start)
             {
                 if (paused)
