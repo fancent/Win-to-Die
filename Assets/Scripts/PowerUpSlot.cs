@@ -11,6 +11,9 @@ public class PowerUpSlot: MonoBehaviour
     Transform[] rt;
     GameObject[] imgs;
     public GameObject canvas;
+    public AudioSource source;
+    public AudioClip fire;
+
     public void Awake()
     {
         size = 1;
@@ -61,6 +64,7 @@ public class PowerUpSlot: MonoBehaviour
             return;
         
         }
+        source.PlayOneShot(fire);
         slot[0].activate(player);
         slot[0] = null;
         Debug.Log(imgs[0]);

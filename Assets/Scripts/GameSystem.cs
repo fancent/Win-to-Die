@@ -17,6 +17,7 @@ public class GameSystem : MonoBehaviour
     bool end;
     bool beginning;
     AudioSource explode;
+    public AudioClip countdownAudio;
 
 
     public GameObject pauseUI;
@@ -56,7 +57,8 @@ public class GameSystem : MonoBehaviour
     IEnumerator cd()
     {
         beginning = true;
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(2f);
+        explode.PlayOneShot(countdownAudio);
         countdown.gameObject.SetActive(true);
         countdown.color = new Color(255/255f, 205 / 255f, 74 / 255f, 255 / 255f);
         countdown.fontSize = 130;
